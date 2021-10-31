@@ -72,6 +72,8 @@ Three tabs are created above the displayed cards (All, Active and Coming Soon). 
 
 ## Hosted link
 
+[Click here for the hosted link](https://coding-challenge-heroku.herokuapp.com/)
+
 ## Build Setup
 
 ```bash
