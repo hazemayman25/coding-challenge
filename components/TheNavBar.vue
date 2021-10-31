@@ -11,7 +11,7 @@
           <CockpitSVG />
           <NuxtLink class="ml-1 py-1" to="/">Cockpit</NuxtLink>
         </li>
-        <li>
+        <li :class="{ selected: isSelected }">
           <InvOppSVG />
           <NuxtLink class="ml-1 py-1" to="/investment-opportunities"
             >Investment Opportunities</NuxtLink
@@ -57,6 +57,7 @@ import RecommendationBlock from "~/components/RecommendationBlock.vue";
 import HelpBlock from "~/components/HelpBlock.vue";
 
 export default {
+  props: ["isSelected"],
   components: {
     CockpitSVG,
     InvOppSVG,
@@ -88,6 +89,11 @@ li {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-left: 1.75rem;
+}
+
+.selected {
+  background-color: #063847;
+  color: white;
 }
 
 li:hover {

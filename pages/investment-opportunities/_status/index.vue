@@ -1,20 +1,25 @@
 <template>
-  <div class="flex flex-col header-grow">
-    <InvOppHeader :numOfOpps="res.length" />
-    <Tabs />
-    <div class="flex flex-row flex-wrap container">
-      <OppCard v-for="(obj, index) of opps" :key="index" :opp="obj" />
+  <div class="flex">
+    <TheNavBar :isSelected="true" />
+    <div class="flex flex-col header-grow">
+      <InvOppHeader :numOfOpps="res.length" />
+      <Tabs />
+      <div class="flex flex-row flex-wrap container">
+        <OppCard v-for="(obj, index) of opps" :key="index" :opp="obj" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import TheNavBar from "~/components/TheNavBar.vue";
 import InvOppHeader from "~/components/InvOppHeader.vue";
 import Tabs from "~/components/UI/Tabs.vue";
 import OppCard from "~/components/UI/OppCard.vue";
 
 export default {
   components: {
+    TheNavBar,
     InvOppHeader,
     Tabs,
     OppCard,
