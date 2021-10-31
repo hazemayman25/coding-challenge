@@ -1,5 +1,71 @@
 # coding-challenge
 
+In this repo I designed the opportunity archive page of the Deals as a task to implement using HTML, WindiCSS, Vuejs/Nuxtjs.
+
+## The Layout hierarchy
+
+As shown in the below code snippet, the default layout carries not only The "nuxt" tag, but also has with it a tag created for the left side navigation bar on the website. Such action is beneficial because the bar should be static in the project and should appear in all routes connected to the same layout
+
+```html
+<template>
+  <div class="flex flex-row">
+    <TheNavBar />
+    <Nuxt />
+  </div>
+</template>
+
+<script>
+  import TheNavBar from "~/components/TheNavBar.vue";
+
+  export default {
+    components: {
+      TheNavBar,
+    },
+  };
+</script>
+```
+
+## The Pages' hierarchy
+
+There are two pages created for the investment opportunities, one is a generic page that shows all the results from the API and the other is a dynamic page which shows specific results depending on their status (active or coming soon)
+
+## The Components
+
+To have an easy organization, the components are divided into **normal**, **SVGS** and **UI**
+
+The **normal** components are: -**TheNavBar**: The component created to display the left side navigation bar. -**RecommendationBlock**: The component created as a part of the navigation bar to display an option to recommend primeCROWD. -**HelpBlock**: The component created as a part of the navigation bar to reveal the contact information of the company if the user needs support. -**InvOppHeader**: The component created to display the upper header that tells the user which tab he accessed and how many opportunities he found, along with a link for the user's profile, notifications icon and language button. -**UserInfo**: The component created to act as a link for the user's profile. -**NotificationButton**: The component used to create a notifications button for the user to see their notifications.
+
+The **UI** components are: -**Funding Round**: The component created as a child to the **OppCard** component to show the user what is the opportunity's investment goal. -**LanguageButton**: The component created to enable the user to change the language -**NumberOfInvestors**: The component created as a child to the **OppCard** component to show the user how many investors want to invest. -**OppCard**: The component that is configured to be a card-view component for each opportunity displayed on the webpage. -**OppStatus**: The component created as a child to the **OppCard** component to show the user the status of the opportunity -**OppType**: The component created as a child to the **OppCard** component to show the user the type of the opportunity -**ProgressBar**: The component created as a child to the **OppCard** component to show the user in a fancy way how much money the opportunity collected in percentage. -**Tabs**: The component created to navigate between opportunities whether to display all opportunities or to display specific ones according to the status.
+The **SVGS** components are: -**CardLineSVG**: The SVG that is located inside the opportunity card tht splits content for a better organization. -**CockpitSVG**: The SVG that is located beside the **Cockpit** option in the left side navigation bar. -**FeeModelSVG**: The SVG that is located beside the **Fee Model** option in the left side navigation bar. -**FlagSVG**: The SVG that is created for the **LanguageButton** component to display the English language flag. -**InvOppSVG**: The SVG that is located beside the **Investment Opportunities** option in the left side navigation bar. -**KnowledgeCenterSVG**: The SVG that is located beside the **Knowledge Center** option in the left side navigation bar. -**LikeSVG**: The SVG created to show the "Like" symbol in the **RecommendationBlock** component. -**LineSVG**: The SVG created to show the "Line" splitter in the **TheNavBar** component. -**MyInvSVG**: The SVG that is located beside the **My Investments** option in the left side navigation bar. -**NotificationButtonSVG**: The SVG that is created to show the notification icon in the **NotificationButton** component. -**VenturePoolSVG**: The SVG that is located beside the **Venture Pool** option in the left side navigation bar.
+
+## How data is fetched
+
+In Nuxt to enhance Search Engine Optimization a property called **asyncData** was created to fetch data from the server and pre-render it before even the component loads. in "pages/investment-opportunities/\_status/index.vue" this property was used so that **OppCard**, its child, can take the returned data as props and finally display the cards of the gathered data from the API.
+
+```javascript
+asyncData(context, callback) {
+    fetch("https://prime-crowd.com/api/mock/rounds")
+      .then((res) => res.json())
+      .then((res) => {
+        callback(null, { res });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+```
+
+## How to filter between opportunities
+
+Three tabs are created above the displayed cards (All, Active and Coming Soon). Each tab is a **NuxtLink** that navigates to the page with the new status updated on the **$route.params** that way we have the root of "investment-opportunities" page to display all cards, "investment-opportunities/active" to display only active cards, and "investment-opportunities/coming_soon" to display only coming soon cards.
+
+## Notes
+
+1.  The source code took me 7 hours (30/10/2021 from 9 PM to 4 AM)
+2.  This documentation took me an hour and a half (31/10/2021 from 12:30 PM to 2 PM)
+
+## Hosted link
+
 ## Build Setup
 
 ```bash
@@ -40,7 +106,6 @@ More information about the usage of this directory in [the documentation](https:
 Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
 
 ### `pages`
 
