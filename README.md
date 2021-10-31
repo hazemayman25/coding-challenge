@@ -68,6 +68,7 @@ Three tabs are created above the displayed cards (All, Active and Coming Soon). 
 
 1.  The source code took me 7 hours (30/10/2021 from 9 PM to 4 AM)
 2.  This documentation took me an hour and a half (31/10/2021 from 12:30 PM to 2 PM)
+3.  I apologize for any delays but It took much more time as this is literally my first time to use Nuxtjs and WindiCSS.
 
 ## Hosted link
 
