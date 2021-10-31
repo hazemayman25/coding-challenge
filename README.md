@@ -2,29 +2,6 @@
 
 In this repo I designed the opportunity archive page of the Deals as a task to implement using HTML, WindiCSS, Vuejs/Nuxtjs.
 
-## The Layout hierarchy
-
-As shown in the below code snippet, the default layout carries not only The "nuxt" tag, but also has with it a tag created for the left side navigation bar on the website. Such action is beneficial because the bar should be static in the project and should appear in all routes connected to the same layout
-
-```html
-<template>
-  <div class="flex flex-row">
-    <TheNavBar />
-    <Nuxt />
-  </div>
-</template>
-
-<script>
-  import TheNavBar from "~/components/TheNavBar.vue";
-
-  export default {
-    components: {
-      TheNavBar,
-    },
-  };
-</script>
-```
-
 ## The Pages' hierarchy
 
 There are two pages created for the investment opportunities, one is a generic page that shows all the results from the API and the other is a dynamic page which shows specific results depending on their status (active or coming soon)
